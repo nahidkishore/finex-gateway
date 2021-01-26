@@ -1,9 +1,10 @@
-import { Button } from 'bootstrap';
+
 import React, { useContext, useState } from 'react';
-import { Container } from 'react-bootstrap';
-import { Link, useHistory } from 'react-router-dom';
+import { Button, Container } from 'react-bootstrap';
+import {  useHistory } from 'react-router-dom';
 import { UserContext } from '../App';
-import WAValidator from 'wallet-address-validator';
+import {WAValidator} from 'wallet-address-validator'
+
 
 const WalletAddress = () => {
   const { wallet, setWallet } = useContext(UserContext);

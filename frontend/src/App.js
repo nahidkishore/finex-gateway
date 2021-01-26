@@ -8,6 +8,7 @@ import Home from './components/Home';
 import Header from './components/Header.js';
 import WalletAddress from './components/WalletAddress';
 import Bank from './components/Bank';
+import Transaction from './components/Transaction';
 export const UserContext = createContext();
 
 function App() {
@@ -18,7 +19,9 @@ function App() {
       <Router>
         <Header></Header>
         <Switch>
-          
+          <Route path='/transaction'>
+            <Transaction></Transaction>
+          </Route>
           <Route path='/bank'>
             <Bank></Bank>
           </Route>

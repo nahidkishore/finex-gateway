@@ -1,6 +1,6 @@
-import { Button, Dropdown } from 'bootstrap';
+
 import React, { useState } from 'react';
-import { Container, DropdownButton } from 'react-bootstrap';
+import { Button, Container, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 const Bank = () => {
@@ -10,14 +10,15 @@ const Bank = () => {
     setSelectBank(e);
   };
   return (
-    <Container className=' border my-5'>
+    <Container className=' border my-3'>
       <div className='container p-5'>
-        <div className='my-5'>
+        <div className='my-3'>
           <DropdownButton
             id='dropdown-basic-button'
             title='Choose your Local Bank'
           >
-            <Dropdown.Item onSelect={handleChange}></Dropdown.Item>
+            <Dropdown.Item onSelect={handleChange}>First Bank</Dropdown.Item>
+            <Dropdown.Item onSelect={handleChange}>Second Bank</Dropdown.Item>
           </DropdownButton>
         </div>
         <h5 className='mb-5'>
