@@ -39,7 +39,8 @@ const SelectCoins = () => {
           </label>
         </div>
         <div className='mt-5'>
-          <h3>Total Cost @Price AOA/TAOA</h3>
+        
+          <h3>Total Cost @Price AOA/TAOA </h3>
         </div>
         <Link to='/wallet'>
           <Button variant='warning' className='px-5 mt-5 text-center'>

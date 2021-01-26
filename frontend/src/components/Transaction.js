@@ -7,14 +7,8 @@ const Transaction = ({ children, ...rest }) => {
   const { wallet, setWallet } = useContext(UserContext);
   const [secretId] = useId();
 
-  const sellHandler = () => {
-    fetch('http://localhost:5000/buy', {
-      method: 'POST',
-      body: JSON.stringify(),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
-    });
+  const alertHandler = () => {
+    alert('successfully added');
   };
   return (
     <Container>
@@ -39,7 +33,7 @@ const Transaction = ({ children, ...rest }) => {
         <Button
           variant='warning'
           className='px-5 mt-5 text-center'
-          onClick={sellHandler}
+          onclick={alertHandler()}
         >
           Next
         </Button>
