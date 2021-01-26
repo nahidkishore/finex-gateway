@@ -1,24 +1,29 @@
 
-import React, { useState } from 'react';
-import { Button, Container, Dropdown, DropdownButton } from 'react-bootstrap';
+import React, { useContext, useState } from 'react';
+import { Button, Container, Dropdown, DropdownButton} from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../App';
 
 const Bank = () => {
-  const [selectBank, setSelectBank] = useState('Chose Your Bank');
+  const [ ibn,setIban ] = useContext(UserContext);
+ 
 
-  const handleChange = (e) => {
-    setSelectBank(e);
-  };
+  const handleChange = event => {
+    setIban(event.target.value);
+}
   return (
     <Container className=' border my-3'>
       <div className='container p-5'>
         <div className='my-3'>
-          <DropdownButton
+        <DropdownButton
             id='dropdown-basic-button'
             title='Choose your Local Bank'
+            onChange={handleChange}
           >
-            <Dropdown.Item onSelect={handleChange}>First Bank</Dropdown.Item>
-            <Dropdown.Item onSelect={handleChange}>Second Bank</Dropdown.Item>
+            <Dropdown.Item >First Bank</Dropdown.Item>
+            <Dropdown.Item >Second Bank</Dropdown.Item>
+            <Dropdown.Item >Third Bank</Dropdown.Item>
+            <Dropdown.Item >Fourth Bank</Dropdown.Item>
           </DropdownButton>
         </div>
         <h5 className='mb-5'>

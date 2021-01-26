@@ -1,24 +1,29 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Button, Container, Dropdown, DropdownButton } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { UserContext } from '../App';
+import { UserContext } from '../../App';
 
-const SelectCoins = () => {
-  const { country, setCountry,quantity,setQuantity } = useContext(UserContext);
-  const [countryCurrency, setCountryCurrency] = useState([]);
-
+const SellPageOne = () => {
+  const [country, setCountry, quantity, setQuantity] = useContext(UserContext);
+  const { countryInfo, SetCountryInfo } = useState();
   useEffect(() => {
     fetch('https://restcountries.eu/rest/v2/all')
       .then((res) => res.json())
-      .then((data) => setCountryCurrency(data));
-  }, [country]);
+      .then((data) => SetCountryInfo(data));
+  }, [countryInfo]);
 
-  const handleChange = (e) => {
-    setCountry(e);
+  const handleCountry = (event) => {
+    setCountry(
+      countryInfo.find(
+        (country) =>
+          country.currencies[0].code === event.target.value.split('/')[1]
+      )
+    );
   };
-  const handleQuantity = event => {
+
+  const handleQuantity = (event) => {
     setQuantity(event.target.value);
-}
+  };
   return (
     <Container className=' border my-5'>
       <div className='container p-5'>
@@ -27,27 +32,31 @@ const SelectCoins = () => {
         <div className='my-5'>
           <DropdownButton
             id='dropdown-basic-button'
-            title={country || 'Select Your Coin'}
+            title='Select Your Coin'
+            onSelect={handleCountry}
           >
-            {countryCurrency.map((c) => (
-              <Dropdown.Item onSelect={handleChange} eventKey={c.name}>
-                {c.name} - ( {c.currencies[0].code})
+            {countryInfo.map((c) => (
+              <Dropdown.Item eventKey={c.alpha2Code}>
+                {country.currencies[0].code}
               </Dropdown.Item>
             ))}
           </DropdownButton>
         </div>
         <div>
           <label htmlFor='quantity'>
-            <input onBlur={handleQuantity}  type='number' placeholder='Quantity' />
+            <input
+              onBlur={handleQuantity}
+              type='number'
+              placeholder='Quantity'
+            />
           </label>
         </div>
         <div className='mt-5'>
-        
           <h3>Total Cost @Price AOA/TAOA </h3>
         </div>
-        <Link to='/wallet'>
+        <Link to='/sellPageTwo'>
           <Button variant='warning' className='px-5 mt-5 text-center'>
-            Next
+            Sell Now
           </Button>
         </Link>
       </div>
@@ -55,4 +64,4 @@ const SelectCoins = () => {
   );
 };
 
-export default SelectCoins;
+export default SellPageOne;

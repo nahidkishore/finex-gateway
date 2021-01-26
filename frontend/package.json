@@ -13,6 +13,7 @@
     "react-id-generator": "^3.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "uniqid": "^5.2.0",
     "wallet-address-validator": "^0.2.4",
     "wallet-validator": "^0.3.5",
     "web-vitals": "^0.2.4"

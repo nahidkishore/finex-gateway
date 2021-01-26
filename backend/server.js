@@ -21,13 +21,13 @@ client.connect((err) => {
 
   console.log('Database connected properly');
 
-  app.post('/buy', (req, res) => {
+  app.post('/BuyData', (req, res) => {
     buyCoin.insertOne(req.body).then((result) => {
       res.send(result.insertedCount > 0);
     });
   });
 
-  app.post('/sell', (req, res) => {
+  app.post('/sellData', (req, res) => {
     sellCoin.insertOne(req.body).then((result) => {
       res.send(result.insertedCount > 0);
     });
